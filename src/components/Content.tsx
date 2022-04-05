@@ -1,8 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Header } from "./Header";
 import { MovieCard } from "./MovieCard";
-
-import { useEffect, useState } from 'react';
-
 import { api } from '../services/api';
 
 import '../styles/content.scss';
@@ -28,7 +26,8 @@ interface GenreSelectedProps {
   selectedGenreId: number;
 }
 
-export function Content({selectedGenreId}:GenreSelectedProps) {
+export function Content({selectedGenreId} : GenreSelectedProps) {
+
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
 
@@ -42,17 +41,18 @@ export function Content({selectedGenreId}:GenreSelectedProps) {
     })
   }, [selectedGenreId]);
 
-  console.log(movies)
   return(
     <div className="container">
-    <Header selectedGenre={selectedGenre} />
-    <main>
-          <div className="movies-list">
-            {movies.map(movie => (
-              <MovieCard key ={movie.imdbID} title={movie.Title} poster={movie.Poster} runtime={movie.Runtime} rating={movie.Ratings[0].Value} />
-            ))}
-          </div>
-    </main>
+
+      <Header selectedGenre={selectedGenre} />
+      
+      <main>
+            <div className="movies-list">
+              {movies.map(movie => (
+                <MovieCard key ={movie.imdbID} title={movie.Title} poster={movie.Poster} runtime={movie.Runtime} rating={movie.Ratings[0].Value} />
+              ))}
+            </div>
+      </main>
     </div>
   )
 }

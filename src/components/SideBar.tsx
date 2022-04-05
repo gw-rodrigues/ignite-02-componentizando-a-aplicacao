@@ -30,6 +30,7 @@ export function SideBar({ selectedGenreId, handleClickButton } : GenreSelectedPr
       <span>Watch<p>Me</p></span>
 
       <div className="buttons-container">
+
         {genres.map(genre => (
           <Button
             key={String(genre.id)}
@@ -39,6 +40,7 @@ export function SideBar({ selectedGenreId, handleClickButton } : GenreSelectedPr
             selected={selectedGenreId === genre.id}
           />
         ))}
+        
       </div>
     </nav>
   )
