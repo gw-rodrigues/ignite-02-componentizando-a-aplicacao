@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { Button } from './components/Button';
 import { MovieCard } from './components/MovieCard';
 
 import { Header } from './components/Header';
 
-// import { SideBar } from './components/SideBar';
+import { SideBar } from './components/SideBar';
 // import { Content } from './components/Content';
 
 import { api } from './services/api';
@@ -67,13 +66,7 @@ export function App() {
 
         <div className="buttons-container">
           {genres.map(genre => (
-            <Button
-              key={String(genre.id)}
-              title={genre.title}
-              iconName={genre.name}
-              onClick={() => handleClickButton(genre.id)}
-              selected={selectedGenreId === genre.id}
-            />
+            <SideBar genre={genre} selectedGenreId={selectedGenreId} handleClickButton={handleClickButton} />
           ))}
         </div>
 
