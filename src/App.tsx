@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { Button } from './components/Button';
 import { MovieCard } from './components/MovieCard';
 
+import { Header } from './components/Header';
+
 // import { SideBar } from './components/SideBar';
 // import { Content } from './components/Content';
 
@@ -78,9 +80,8 @@ export function App() {
       </nav>
 
       <div className="container">
-        <header>
-          <span className="category">Categoria:<span> {selectedGenre.title}</span></span>
-        </header>
+
+        <Header selectedGenre={selectedGenre} />
 
         <main>
           <div className="movies-list">
