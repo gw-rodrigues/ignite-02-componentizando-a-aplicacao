@@ -11,4 +11,4 @@ A aplicação já está totalmente funcional mas grande parte do seu código est
 - A primeira categoria da lista (que é "Ação") já deve começar como marcada;
 - O header da aplicação possui apenas o nome da categoria selecionada que deve mudar dinamicamente.
 
-![Desafio 02](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fff7c8a12-50d1-4a20-a680-9085d0bd6823%2Fexample.png?table=block&id=641fa56e-763e-48f3-8a2b-1bf93007de1b&spaceId=08f749ff-d06d-49a8-a488-9846e081b224&width=1250&userId=bd99c5d2-e5cc-4bb1-842f-3c58d8eff295&cache=v2)
+![desafio-02](https://user-images.githubusercontent.com/92688864/161743504-abad57af-3f9c-4ad6-814d-2c030e46e297.gif)
