@@ -1,36 +1,45 @@
-import { Star, Clock } from 'react-feather';
+import { memo } from "react";
+import { Star, Clock } from "react-feather";
 
-import '../styles/movie-card.scss';
+import "../styles/movie-card.scss";
 
 interface MovieCardProps {
-  title: string;
-  poster: string;
-  rating: string;
-  runtime: string;
+  card: {
+    Title: string;
+    Poster: string;
+    Ratings: Array<{
+      Source: string;
+      Value: string;
+    }>;
+    Runtime: string;
+  };
 }
 
-export function MovieCard(props: MovieCardProps) {
+export function MovieCardComponent({
+  card: { Title, Poster, Ratings, Runtime },
+}: MovieCardProps) {
   return (
     <div className="movie-card">
-      <img
-        src={props.poster}
-        alt={props.title}
-      />
+      <img src={Poster} alt={Title} />
 
       <div>
         <div className="movie-info">
-          <span>{props.title}</span>
+          <span>{Title}</span>
           <div className="meta">
             <div>
-              <Star /> {props.rating}
+              <Star /> {Ratings[0].Value}
             </div>
 
             <div>
-              <Clock /> {props.runtime}
+              <Clock /> {Runtime}
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
+
+export const MovieCard = memo(MovieCardComponent, (prevProps, nextProps) =>
+  Object.is(prevProps.card, nextProps.card)
+);
