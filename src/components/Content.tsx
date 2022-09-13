@@ -4,12 +4,7 @@ import { MovieCard } from "./MovieCard";
 import { api } from "../services/api";
 
 import "../styles/content.scss";
-
-interface GenreResponseProps {
-  id: number;
-  name: "action" | "comedy" | "documentary" | "drama" | "horror" | "family";
-  title: string;
-}
+import { useMoviesGenres } from "../Contexts/Movies";
 
 interface MovieProps {
   imdbID: string;
@@ -22,15 +17,10 @@ interface MovieProps {
   Runtime: string;
 }
 
-interface GenreSelectedProps {
-  selectedGenreId: number;
-}
+export function Content() {
+  const { selectedGenreId } = useMoviesGenres();
 
-export function Content({ selectedGenreId }: GenreSelectedProps) {
   const [movies, setMovies] = useState<MovieProps[]>([]);
-  const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>(
-    {} as GenreResponseProps
-  );
 
   useEffect(() => {
     api
@@ -38,28 +28,19 @@ export function Content({ selectedGenreId }: GenreSelectedProps) {
       .then((response) => {
         setMovies(response.data);
       });
-
-    api
-      .get<GenreResponseProps>(`genres/${selectedGenreId}`)
-      .then((response) => {
-        setSelectedGenre(response.data);
-      });
-      
   }, [selectedGenreId]);
-
-  
 
   return (
     <div className="container">
-      <Header selectedGenre={selectedGenre} />
+      <Header />
 
       <main>
         <div className="movies-list">
-          {movies.map((movie) => (
-            <MovieCard key={movie.imdbID} card={movie} />
+          {
+            movies.map((movie) => (
+              <MovieCard key={movie.imdbID} card={movie} />
             ))
             //<MovieCard key ={movie.imdbID} title={movie.Title} poster={movie.Poster} runtime={movie.Runtime} rating={movie.Ratings[0].Value} />
-          
           }
         </div>
       </main>

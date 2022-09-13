@@ -1,23 +1,16 @@
-import { useCallback, useState } from "react";
 import { SideBar } from "./components/SideBar";
 import { Content } from "./components/Content";
 import "./styles/global.scss";
 
+import { MoviesContext } from "./Contexts/Movies";
+
 export function App() {
-  const [selectedGenreId, setSelectedGenreId] = useState<number>(1);
-
-  const handleClickButton = useCallback((id: number) => {
-    setSelectedGenreId(id);
-  }, []);
-
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
-      <SideBar
-        selectedGenreId={selectedGenreId}
-        handleClickButton={handleClickButton}
-      />
-
-      <Content selectedGenreId={selectedGenreId} />
-    </div>
+    <MoviesContext>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <SideBar />
+        <Content />
+      </div>
+    </MoviesContext>
   );
 }

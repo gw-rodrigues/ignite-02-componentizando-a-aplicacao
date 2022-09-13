@@ -1,7 +1,8 @@
 import { Icon } from "./Icon";
 
 import "../styles/button.scss";
-import { ButtonHTMLAttributes, memo } from "react";
+import { ButtonHTMLAttributes, memo, useContext } from "react";
+import { useMoviesGenres } from "../Contexts/Movies";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   genre: {
